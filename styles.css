@@ -279,3 +279,153 @@ canvas {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #141e30, #243b55);
+    color: #fff;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Light Mode */
+body.light-mode {
+    background: linear-gradient(to bottom right, #f9f9f9, #e6e6e6);
+    color: #333;
+}
+
+/* Container */
+.container {
+    max-width: 960px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: inherit;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1rem;
+    color: inherit;
+}
+
+.btn-mode {
+    background: #f39c12;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-mode:hover {
+    background: #e67e22;
+}
+
+/* Cards */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: inherit;
+}
+
+/* Inputs and Buttons */
+input, button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+button {
+    background: #2980b9;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #1e6f99;
+}
+
+/* Results Section */
+.card-title {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #1abc9c;
+    margin-bottom: 20px;
+}
+
+/* Result Overview */
+.result-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    text-align: center;
+}
+
+.overview-item {
+    flex: 1 1 calc(50% - 10px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.overview-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    .overview-item {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 0.8rem;
+    }
+
+    button, input {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
