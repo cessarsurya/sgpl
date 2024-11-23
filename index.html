@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Shield Parameter Calculator">
+    <title>Shield Parameter Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Pop-up Modal -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>Welcome!</h2>
+            <p>This calculator helps you analyze <strong>sediment stability</strong> and assess <strong>erosion risks</strong>.</p>
+            <div class="formula">
+                <h3>Formula</h3>
+                <p><strong>θ = τ₀ / [(ρₛ - ρ) × g × d]</strong></p>
+                <ul>
+                    <li>θ: Shield Parameter</li>
+                    <li>τ₀: Shear stress (\( τ₀ = ρ uₐ² \))</li>
+                    <li>ρ: Water density</li>
+                    <li>ρₛ: Sediment density</li>
+                    <li>g: Gravitational acceleration (9.81 m/s²)</li>
+                    <li>d: Sediment diameter</li>
+                </ul>
+            </div>
+            <button class="btn-close" onclick="closePopup()">Got it! Start Now</button>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div class="container">
+        <header>
+            <h1>Shield Parameter Calculator</h1>
+            <p>Your trusted tool for sediment and erosion analysis.</p>
+            <button class="btn-mode" onclick="toggleMode()">Toggle Dark/Light Mode</button>
+        </header>
+
+        <main>
+            <!-- Input Parameters -->
+            <div class="card">
+                <h2>Input Parameters</h2>
+                <form id="shield-form">
+                    <div class="form-group">
+                        <label for="density-water">Water Density (ρ) [kg/m³]:</label>
+                        <input type="number" id="density-water" value="1025" required title="Density of water, typically 1025 kg/m³ for seawater.">
+                    </div>
+                    <div class="form-group">
+                        <label for="density-sediment">Sediment Density (ρₛ) [kg/m³]:</label>
+                        <input type="number" id="density-sediment" value="2650" required title="Density of sediment, e.g., 2650 kg/m³ for quartz.">
+                    </div>
+                    <div class="form-group">
+                        <label for="diameter">Sediment Diameter (d) [m]:</label>
+                        <input type="number" id="diameter" step="0.0001" value="0.0003" required title="Diameter of sediment particles, in meters.">
+                    </div>
+                    <div class="form-group">
+                        <label for="shear-velocity">Shear Velocity (uₐ) [m/s]:</label>
+                        <input type="number" id="shear-velocity" step="0.01" required title="Velocity near the bed of a stream or river, in m/s.">
+                    </div>
+                    <div class="form-group">
+                        <label for="critical-theta">Critical Shield Parameter (θₐ):</label>
+                        <input type="number" id="critical-theta" value="0.03" step="0.01" required title="Critical Shield parameter, typically 0.03 for non-cohesive sediments.">
+                    </div>
+                    <button type="button" class="btn" onclick="calculate()">Calculate</button>
+                </form>
+                <button class="btn" onclick="resetForm()">Reset Form</button>
+            </div>
+
+            
+            <!-- Results Section -->
+            <div class="card">
+                <h2 class="card-title">Results</h2>
+
+                <!-- Overview Tab -->
+                <div id="overview-tab" class="tab-content active">
+                    <div class="result-overview">
+                        <div class="overview-item">
+                            <h3>Shield Parameter (θ)</h3>
+                            <p id="theta-result">-</p>
+                        </div>
+                        <div class="overview-item">
+                            <h3>Critical Parameter (θₐ)</h3>
+                            <p id="critical-theta-result">-</p>
+                        </div>
+                        <div class="overview-item status">
+                            <h3>Status</h3>
+                            <p id="result">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2024 Coastal and Marine Geospatial Science Calculator | FITB ITB</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
